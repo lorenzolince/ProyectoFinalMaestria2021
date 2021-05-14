@@ -16,7 +16,8 @@ public class ProductosDto {
     private String descripcion;
     private int unidad;
     private double precio;
-     private String images;
+    private String images;
+    private String tipo;
 
     public int getId() {
         return id;
@@ -71,6 +72,14 @@ public class ProductosDto {
         this.images = images;
         return this;
     }
-    
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public ProductosDto setTipo(String tipo) {
+        this.tipo = tipo;
+        return this;
+    }
 
 }

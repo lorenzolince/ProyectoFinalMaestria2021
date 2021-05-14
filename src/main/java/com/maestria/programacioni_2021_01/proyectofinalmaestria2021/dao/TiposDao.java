@@ -5,22 +5,15 @@
  */
 package com.maestria.programacioni_2021_01.proyectofinalmaestria2021.dao;
 
-import com.maestria.programacioni_2021_01.proyectofinalmaestria2021.dto.ProductosDto;
+import com.maestria.programacioni_2021_01.proyectofinalmaestria2021.dto.TipoDto;
 import java.util.List;
 
 /**
  *
  * @author loren
  */
-public interface ProductosDao {
-
-    List<ProductosDto> getAll();
-
-    ProductosDto getbyId(int id);
-
-    void save(ProductosDto producto);
-
-    void update(ProductosDto producto);
-
-    void delete(int id);
+public interface TiposDao {
+    
+     List<TipoDto> getAll();
+    
 }

@@ -7,12 +7,7 @@ package com.maestria.programacioni_2021_01.proyectofinalmaestria2021.controller;
 
 import com.maestria.programacioni_2021_01.proyectofinalmaestria2021.service.ProductosService;
 import com.maestria.programacioni_2021_01.proyectofinalmaestria2021.service.impl.ProductosServiceImpl;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Productos extends javax.swing.JPanel {
 
+    private static String column[] = {"ID", "COD_PRODUCTO", "DESC_PRODUCTO", "UNIDAD", "PRECIO", "IMAGEN", "TIPO"};
     private ProductosService productosService;
 
     public Productos() {
@@ -30,10 +26,8 @@ public class Productos extends javax.swing.JPanel {
         Object data[][] = this.productosService
                 .getAll()
                 .stream()
-                .map(p -> Arrays.asList(p.getId(), p.getCodigo(), p.getDescripcion(), p.getUnidad(), p.getPrecio()).toArray())
+                .map(p -> Arrays.asList(p.getId(), p.getCodigo(), p.getDescripcion(), p.getUnidad(), p.getPrecio(), p.getImages(), p.getTipo()).toArray())
                 .toArray(Object[][]::new);
-        String column[] = {"ID", "COD_PRODUCTO", "DESC_PRODUCTO", "UNIDAD", "PRECIO"};
-
         DefaultTableModel md = new DefaultTableModel(data, column);
         jTableProductos.setModel(md);
     }
@@ -58,20 +52,20 @@ public class Productos extends javax.swing.JPanel {
 
         jTableProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "COD_PRODUCTO", "DESC_PRODUCTO", "UNIDAD", "PRECIO"
+                "Id", "COD_PRODUCTO", "DESC_PRODUCTO", "UNIDAD", "PRECIO", "IMAGEN", "TIPO"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, true, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -89,6 +83,8 @@ public class Productos extends javax.swing.JPanel {
             jTableProductos.getColumnModel().getColumn(2).setResizable(false);
             jTableProductos.getColumnModel().getColumn(3).setResizable(false);
             jTableProductos.getColumnModel().getColumn(4).setResizable(false);
+            jTableProductos.getColumnModel().getColumn(5).setResizable(false);
+            jTableProductos.getColumnModel().getColumn(6).setResizable(false);
         }
 
         jTabbedPane4.addTab("1", jScrollPane1);
