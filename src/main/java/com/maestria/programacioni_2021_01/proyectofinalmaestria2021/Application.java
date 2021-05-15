@@ -14,7 +14,6 @@ import java.awt.CardLayout;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -27,6 +26,7 @@ public class Application extends JFrame {
     private CardLayout card;
     private Container c;
     private UserService userService;
+   
 
     public Application() {
         setTitle("Login");

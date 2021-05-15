@@ -127,7 +127,7 @@ public class ProductosDaoImpl implements ProductosDao {
     @Override
     public void update(ProductosDto producto) {
         try {
-            pstmt = con.prepareStatement("UPDATE Productos SET COD_PRODUCTO = ? ,SET DESC_PRODUCTO=?, SET UNIDAD=?, SET PRECIO=?, SET IMAGEN=? ,SET TIPO=? WHERE ID =?");
+            pstmt = con.prepareStatement("UPDATE Productos SET COD_PRODUCTO = ? , DESC_PRODUCTO=?,  UNIDAD=?,  PRECIO=?,  IMAGEN=? , TIPO=? WHERE ID =?");
             pstmt.setString(1, producto.getCodigo());
             pstmt.setString(2, producto.getDescripcion());
             pstmt.setInt(3, producto.getUnidad());
@@ -153,7 +153,7 @@ public class ProductosDaoImpl implements ProductosDao {
     @Override
     public void delete(int id) {
         try {
-            pstmt = con.prepareStatement("DELETE Productos  WHERE ID =?");
+            pstmt = con.prepareStatement("DELETE FROM Productos  WHERE ID =?");
             pstmt.setInt(1, id);
             pstmt.executeUpdate(); //insert, delete, update
             System.out.println("Se grabo la transaccion");

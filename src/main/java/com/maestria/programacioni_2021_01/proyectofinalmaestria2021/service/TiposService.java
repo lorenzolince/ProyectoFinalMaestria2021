@@ -5,23 +5,14 @@
  */
 package com.maestria.programacioni_2021_01.proyectofinalmaestria2021.service;
 
-import com.maestria.programacioni_2021_01.proyectofinalmaestria2021.dto.ProductosDto;
+import com.maestria.programacioni_2021_01.proyectofinalmaestria2021.dto.TipoDto;
 import java.util.List;
 
 /**
  *
  * @author loren
  */
-public interface ProductosService {
+public interface TiposService {
 
-    List<ProductosDto> getAll();
-    
-    ProductosDto getById(int id);
-
-    void save(ProductosDto producto);
-
-    void update(ProductosDto producto);
-
-    void delete(int id);
-
+    List<TipoDto> getAll();
 }

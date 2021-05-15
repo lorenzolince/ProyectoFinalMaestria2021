@@ -28,4 +28,24 @@ public class ProductosServiceImpl implements ProductosService {
         return this.productos.getAll();
     }
 
+    @Override
+    public void save(ProductosDto producto) {
+      this.productos.save(producto);
+    }
+
+    @Override
+    public void update(ProductosDto producto) {
+       this.productos.update(producto);
+    }
+
+    @Override
+    public void delete(int id) {
+        this.productos.delete(id);
+    }
+
+    @Override
+    public ProductosDto getById(int id) {
+       return this.productos.getbyId(id);
+    }
+
 }
