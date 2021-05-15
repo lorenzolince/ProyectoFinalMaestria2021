@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -26,14 +27,16 @@ public class Login extends javax.swing.JPanel {
     public Login() {
 
         initComponents();
+        this.setSize(400, 400);
     }
 
     @Override
     public void paintComponent(Graphics g) {
-        File file = new File("login.png");
-        Image img = Toolkit.getDefaultToolkit().getImage(file.getAbsolutePath());
+        File file = new File("login.jpg");
+         Image img = Toolkit.getDefaultToolkit().getImage(file.getAbsolutePath());
         super.paintComponent(g);
-        g.drawImage(img, 0, 0, this);
+        g.drawImage(img, 0, 0,400,400, this);
+         g.finalize();
     }
 
     public JButton getjButtonSendLogin() {
@@ -47,7 +50,7 @@ public class Login extends javax.swing.JPanel {
     public JTextField getjTextField1() {
         return jTextField1;
     }
- 
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

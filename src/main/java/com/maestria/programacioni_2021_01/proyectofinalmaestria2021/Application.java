@@ -26,7 +26,6 @@ public class Application extends JFrame {
     private CardLayout card;
     private Container c;
     private UserService userService;
-   
 
     public Application() {
         setTitle("Login");
@@ -41,6 +40,7 @@ public class Application extends JFrame {
                 UserDto userValid = userService.getByUserName(l.getjTextField1().getText());
                 if (userValid != null && userValid.getPassword().equals(l.getjPasswordField1().getText())) {
                     JOptionPane.showMessageDialog(null, "Bienvenido al Sistema");
+                    sizeChange();
                     card.next(c);
                     setTitle("Inventario de Productos");
                 } else {
@@ -53,10 +53,12 @@ public class Application extends JFrame {
         c.add("Productos", new Productos());
 
     }
-
+private void sizeChange(){
+ this.setSize(800, 400);
+}
     public static void main(String[] args) {
         Application cl = new Application();
-        cl.setSize(800, 400);
+        cl.setSize(400, 400);
         cl.setVisible(true);
         cl.setResizable(false);
         cl.setDefaultCloseOperation(EXIT_ON_CLOSE);
