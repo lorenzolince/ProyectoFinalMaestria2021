@@ -442,7 +442,7 @@ public class Productos extends javax.swing.JPanel {
             ProductosDto producto = new ProductosDto()
                     .setCodigo(jTextFieldCode.getText())
                     .setDescripcion(jTextFieldDesc.getText())
-                    .setImages(fileSource.getName())
+                    .setImages("images/"+fileSource.getName())
                     .setPrecio(Double.valueOf(jTextFieldPrecio.getText()))
                     .setUnidad(Integer.valueOf(jTextFieldUnity.getText()))
                     .setTipo(jComboBoxTipo.getSelectedItem().toString());
@@ -513,7 +513,7 @@ public class Productos extends javax.swing.JPanel {
             if (fileImagePath != null && !fileImagePath.equals("")) {
                 fileSource = new File(fileImagePath);
                 dest = new File("images/"+fileSource.getName());
-                fileUpdatePath = dest.getName();
+                fileUpdatePath = "images/"+dest.getName();
             }
 
             String selctProducto = jComboBoxProductos.getSelectedItem().toString();
