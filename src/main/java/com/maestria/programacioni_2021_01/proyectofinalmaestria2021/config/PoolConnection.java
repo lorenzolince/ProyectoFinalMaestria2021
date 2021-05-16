@@ -1,20 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.maestria.programacioni_2021_01.proyectofinalmaestria2021.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.Enumeration;
 import java.util.Vector;
 
 /**
  *
- * @author loren
+ * @author lorenzolince
  */
 public class PoolConnection {
 

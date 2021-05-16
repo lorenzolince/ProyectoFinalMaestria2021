@@ -31,7 +31,7 @@ import org.apache.commons.csv.CSVRecord;
 
 /**
  *
- * @author loren
+ * @author lorenzolince
  */
 public class Application extends JFrame {
     

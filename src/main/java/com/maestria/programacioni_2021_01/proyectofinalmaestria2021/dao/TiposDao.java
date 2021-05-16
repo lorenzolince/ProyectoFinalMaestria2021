@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author loren
+ * @author lorenzolince
  */
 public interface TiposDao {
     
