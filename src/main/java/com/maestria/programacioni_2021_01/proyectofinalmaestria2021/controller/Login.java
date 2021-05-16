@@ -5,6 +5,7 @@
  */
 package com.maestria.programacioni_2021_01.proyectofinalmaestria2021.controller;
 
+import com.maestria.programacioni_2021_01.proyectofinalmaestria2021.config.PoolConnection;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -144,6 +145,7 @@ public class Login extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1_salirActionPerformed
+        PoolConnection.getInstance().release();
         System.exit(0);
     }//GEN-LAST:event_jButton1_salirActionPerformed
 
