@@ -9,11 +9,9 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.event.AncestorEvent;
 
 /**
  *
@@ -32,7 +30,7 @@ public class Login extends javax.swing.JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-        File file = new File("login.jpg");
+        File file = new File("images/login.jpg");
          Image img = Toolkit.getDefaultToolkit().getImage(file.getAbsolutePath());
         super.paintComponent(g);
         g.drawImage(img, 0, 0,400,400, this);

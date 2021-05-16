@@ -18,7 +18,7 @@ public class PoolConnection {
     private Vector freeConnections = new Vector();
     static private int maxConn = 0;
     static private String driver_class = "net.ucanaccess.jdbc.UcanaccessDriver";
-    static private String URL = "jdbc:ucanaccess://DATOS.accdb";
+    static private String URL = "jdbc:ucanaccess://DB//DATOS.accdb";
 
     static synchronized public PoolConnection getInstance() {
         if (instance == null) {
