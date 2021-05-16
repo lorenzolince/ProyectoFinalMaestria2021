@@ -13,12 +13,15 @@ import com.maestria.programacioni_2021_01.proyectofinalmaestria2021.service.Tipo
 import com.maestria.programacioni_2021_01.proyectofinalmaestria2021.service.impl.ProductosServiceImpl;
 import com.maestria.programacioni_2021_01.proyectofinalmaestria2021.service.impl.TiposServiceImpl;
 import java.awt.Image;
-import java.awt.event.ItemEvent;
 import java.io.File;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -35,6 +38,7 @@ public class Productos extends javax.swing.JPanel {
     private TiposService tiposService;
     private String fileImagePath = "";
     private List<ProductoSelectDto> selectProductos = new ArrayList<>();
+    private List<String> items;
 
     public Productos() {
         this.productosService = new ProductosServiceImpl();
@@ -620,8 +624,46 @@ public class Productos extends javax.swing.JPanel {
         jLabel1UpdateImage.setIcon(imageIcon);
     }//GEN-LAST:event_jComboBoxProductosActionPerformed
 
-    public void initData(List<ProductosDto> productos) {
+    private void initData(List<ProductosDto> productos) {
 
+        Object data[][] = productos
+                .stream()
+                .map(p -> Arrays.asList(p.getId(), p.getCodigo(), p.getDescripcion(), p.getUnidad(), p.getPrecio(), p.getImages(), p.getTipo()).toArray())
+                .toArray(Object[][]::new);
+        DefaultTableModel md = new DefaultTableModel(data, column);
+        jTableProductos.setModel(md);
+        ProductosDto pro = productos.get(0);
+        jTextFieldUpdateCodigo.setText(pro.getCodigo());
+        jTextFieldUpdateDesc.setText(pro.getDescripcion());
+        jTextFieldUpdatePrecio.setText("" + pro.getPrecio());
+        jTextFieldUpdateUnity.setText("" + pro.getUnidad());
+        fileImagePath = pro.getImages();
+        ImageIcon imageIcon = new ImageIcon(fileImagePath);
+        Image image = imageIcon.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        imageIcon = new ImageIcon(newimg);
+        jLabel1UpdateImage.setIcon(imageIcon);
+        jLabel1Delete.setIcon(imageIcon);
+    }
+
+    public void initDataApplication(List<ProductosDto> productos) {
+        selectProductos.clear();
+        productos.stream().forEach(t -> selectProductos.add(new ProductoSelectDto().setId(t.getId()).setCodigo(t.getCodigo())));
+        items = new ArrayList<>();
+        for (int i = 0; i < jComboBoxProductos.getItemCount(); i++) {
+            items.add(jComboBoxProductos.getItemAt(i));
+        }
+        selectProductos.stream().filter(s -> !items.contains(s.getCodigo()))
+                .collect(Collectors.toList())
+                .forEach(t -> jComboBoxProductos.addItem(t.getCodigo()));
+        items.clear();
+        items = new ArrayList<>();
+        for (int i = 0; i < jComboBoxProductosDelete.getItemCount(); i++) {
+            items.add(jComboBoxProductosDelete.getItemAt(i));
+        }
+        selectProductos.stream().filter(s -> !items.contains(s.getCodigo()))
+                .collect(Collectors.toList())
+                .forEach(t -> jComboBoxProductosDelete.addItem(t.getCodigo()));
         Object data[][] = productos
                 .stream()
                 .map(p -> Arrays.asList(p.getId(), p.getCodigo(), p.getDescripcion(), p.getUnidad(), p.getPrecio(), p.getImages(), p.getTipo()).toArray())

@@ -80,7 +80,7 @@ public class Application extends JFrame {
                                     .setTipo(record.get("TIPO"))
                                     .setUnidad(Integer.valueOf(record.get("UNIDAD"))));
                         }
-                        p.initData(productosService.getAll());
+                        p.initDataApplication(productosService.getAll());
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
@@ -133,7 +133,7 @@ public class Application extends JFrame {
     
     private void sizeChange() {
         this.setJMenuBar(mb);
-        this.setSize(800, 400);
+        this.setSize(800, 600);
     }
     
     private void showDialog() {
