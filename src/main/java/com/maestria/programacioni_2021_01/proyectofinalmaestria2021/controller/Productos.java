@@ -620,7 +620,7 @@ public class Productos extends javax.swing.JPanel {
         jLabel1UpdateImage.setIcon(imageIcon);
     }//GEN-LAST:event_jComboBoxProductosActionPerformed
 
-    private void initData(List<ProductosDto> productos) {
+    public void initData(List<ProductosDto> productos) {
 
         Object data[][] = productos
                 .stream()
