@@ -55,15 +55,14 @@ public class Productos extends javax.swing.JPanel {
         tipos.stream().forEach(t -> jComboBoxTipo.addItem(t.getName()));
         tipos.stream().forEach(t -> jComboBoxTipoUpdateTipo.addItem(t.getName()));
     }
-    
-    
-        @Override
+
+    @Override
     public void paintComponent(Graphics g) {
         File file = new File("login.jpg");
-         Image img = Toolkit.getDefaultToolkit().getImage(file.getAbsolutePath());
+        Image img = Toolkit.getDefaultToolkit().getImage(file.getAbsolutePath());
         super.paintComponent(g);
-        g.drawImage(img, 0, 0,800,400, this);
-      //g.finalize();
+        g.drawImage(img, 0, 0, 800, 400, this);
+        //g.finalize();
     }
 
     /**
@@ -578,7 +577,7 @@ public class Productos extends javax.swing.JPanel {
             Image newimg = image.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
             imageIcon = new ImageIcon(newimg);
             jLabelImages.setIcon(imageIcon);
-            // jLabelImages.repaint();
+
         }
     }//GEN-LAST:event_jButtonFileActionPerformed
 
@@ -629,8 +628,9 @@ public class Productos extends javax.swing.JPanel {
                     .setTipo(jComboBoxTipoUpdateTipo.getSelectedItem().toString());
             if (!producto.getImages().equals(imageUpdate)) {
                 new File(imageUpdate).delete();
+                 Files.copy(fileSource.toPath(), dest.toPath());
             }
-            Files.copy(fileSource.toPath(), dest.toPath());
+          
             this.productosService.update(producto);
             fileImagePath = "";
             List<ProductosDto> productos = this.productosService.getAll();
@@ -660,7 +660,7 @@ public class Productos extends javax.swing.JPanel {
         Image newimg = image.getScaledInstance(160, 160, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         imageIcon = new ImageIcon(newimg);
         jLabel1Delete.setIcon(imageIcon);
-
+        fileImagePath = "";
     }//GEN-LAST:event_jComboBoxProductosDeleteActionPerformed
 
     private void jComboBoxProductosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxProductosItemStateChanged
@@ -685,7 +685,7 @@ public class Productos extends javax.swing.JPanel {
                 jComboBoxProductos.removeItemAt(index);
                 jComboBoxProductosDelete.removeItemAt(index);
                 initData(productos);
-                JOptionPane.showMessageDialog(null, "Se Booro el producto satisfactoriamente");
+                JOptionPane.showMessageDialog(null, "Se Borro el producto satisfactoriamente");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al Borrar el producto", "", JOptionPane.ERROR_MESSAGE);
@@ -709,6 +709,7 @@ public class Productos extends javax.swing.JPanel {
         Image newimg = image.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         imageIcon = new ImageIcon(newimg);
         jLabel1UpdateImage.setIcon(imageIcon);
+        fileImagePath = "";
     }//GEN-LAST:event_jComboBoxProductosActionPerformed
 
     private void initData(List<ProductosDto> productos) {
@@ -732,6 +733,7 @@ public class Productos extends javax.swing.JPanel {
         jLabel1UpdateImage.setIcon(imageIcon);
         jLabel1Delete.setIcon(imageIcon);
     }
+
     public void initDataApplication(List<ProductosDto> productos) {
         selectProductos.clear();
         productos.stream().forEach(t -> selectProductos.add(new ProductoSelectDto().setId(t.getId()).setCodigo(t.getCodigo())));
@@ -768,6 +770,7 @@ public class Productos extends javax.swing.JPanel {
         imageIcon = new ImageIcon(newimg);
         jLabel1UpdateImage.setIcon(imageIcon);
         jLabel1Delete.setIcon(imageIcon);
+        fileImagePath = "";
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonDelete;
