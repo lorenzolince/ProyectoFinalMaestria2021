@@ -146,6 +146,7 @@ public class Application extends JFrame {
         cl.setVisible(true);
         cl.setResizable(false);
         cl.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        cl.setLocation(800, 200);
     }
     
 }
